@@ -2,6 +2,10 @@
 # Title: create_users.sh
 # Usage: Run as root to setup the fellowship
 
+# Enable internet
+systemctl enable dhcpcd 
+systemctl enable iwd
+
 # Check for dialog
 if ! command -v dialog &> /dev/null; then
     pacman -S --noconfirm dialog
