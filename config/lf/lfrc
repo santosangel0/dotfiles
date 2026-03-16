@@ -1,0 +1,24 @@
+# --- Settings ---
+set drawbox     # UI cleaner
+set icons       # Icons (if you have Nerd Fonts)
+set preview     # Right panel preview
+set info size   # Show file size in the list
+
+# --- Custom Bindings ---
+map g $google-chrome-stable "$f"  # 'g' for Chrome
+map e $nvim "$f"             # 'e' for Edit
+map i $nsxiv -a "$f"         # 'i' for Image (nsxiv)
+map v $mpv "$f"              # 'v' for Video (mpv)
+map . set hidden!            # '.' to toggle hidden files
+
+# --- The "Universal Open" Command ---
+# This defines what happens when you press ENTER
+cmd open ${{
+    case $(file --mime-type "$f" -b) in
+        image/*) nsxiv -a "$f" ;;
+        video/*) mpv "$f" ;;
+        application/pdf) setsid google-chrome-stable "$f" & ;;
+        *) nvim "$f" ;;
+    esac
+}}
+map <enter> open
