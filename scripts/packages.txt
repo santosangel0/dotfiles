@@ -1,0 +1,8 @@
+# Base System & Interaction
+lf nsxiv mpv xclip feh openssh dialog 
+
+# Audio & Hardware
+pipewire pipewire-pulse pamixer brightnessctl bluez bluez-utils
+
+# Development & PDF
+neovim base-devel mupdf poppler xdg-utils
